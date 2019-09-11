@@ -63,7 +63,18 @@ class EntriesController extends BaseController
      * @throws BadRequestHttpException
      */
     public function actionSaveEntry()
-    {
+    {   
+        // TODO: Add config/sproutforms.php file to add allowed origins in settings!
+        // $origin = \Craft::$app->getRequest()->headers->get('Origin');
+        // $allowed_domains = [
+        //   'http://localhost:3000',
+        //   'https://www.mysite2.com',
+        //   'http://www.mysite2.com',
+        // ];
+        
+        // For now: Set wildcard for CORS
+        header('Access-Control-Allow-Origin: *');
+
         $this->requirePostRequest();
 
         $request = Craft::$app->getRequest();
